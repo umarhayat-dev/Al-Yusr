@@ -1,0 +1,1411 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile-first responsive optimizations */
+@layer base {
+  html {
+    font-size: 16px;
+  }
+  
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Smooth scrolling for mobile */
+  * {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* COMPLETE WEBSITE COLOR TRANSFORMATION SYSTEM */
+/* This system covers all pages, dashboards, components, and elements */
+
+/* ============================================= */
+/* MASTER COLOR FOUNDATION - Natural Green Theme */
+/* ============================================= */
+:root {
+  /* Core Brand Colors - Natural Green Palette */
+  --color-primary: #1e3f20;        /* Pakistan Green - Main brand color */
+  --color-primary-light: #345830;  /* Hunter Green - Lighter green for hover states */
+  --color-primary-dark: #1a1f16;   /* Eerie Black - Darker green for shadows */
+  
+  --color-accent: #94ecbe;         /* Aquamarine - Action and emphasis color */
+  --color-accent-light: #e9fbf2;   /* Light Aquamarine - Subtle highlights */
+  --color-accent-dark: #4a7856;    /* Fern Green - Pressed states */
+  
+  --color-secondary: #4a7856;      /* Fern Green - Supporting color for depth */
+  --color-secondary-light: #89b796; /* Light Fern Green - Variations */
+  
+  /* Neutral Color System - Natural Green Tones */
+  --color-neutral-100: #e9fbf2;    /* Lightest Aquamarine - backgrounds, cards */
+  --color-neutral-200: #d8e7dc;    /* Light Fern - subtle backgrounds */
+  --color-neutral-300: #b1cfb9;    /* Medium Fern - borders, dividers */
+  --color-neutral-400: #89b796;    /* Fern 700 - inactive elements */
+  --color-neutral-500: #4a7856;    /* Fern Green - placeholder text */
+  --color-neutral-600: #345830;    /* Hunter Green - secondary text */
+  --color-neutral-700: #1e3f20;    /* Pakistan Green - primary text */
+  --color-neutral-800: #1a1f16;    /* Eerie Black - headings, emphasis */
+  --color-neutral-900: #050604;    /* Darkest Eerie - maximum contrast */
+  
+  /* Semantic Color Applications - Makes your code meaningful and maintainable */
+  --bg-page: var(--color-neutral-100);
+  --bg-section-light: var(--color-neutral-100);
+  --bg-section-dark: var(--color-primary);
+  --bg-card: var(--color-neutral-100);
+  --bg-modal: var(--color-neutral-100);
+  --bg-header: var(--color-primary);
+  --bg-footer: var(--color-neutral-800);
+  --bg-sidebar: var(--color-neutral-200);
+  
+  /* Text Color System - Ensures consistent typography hierarchy */
+  --text-primary: var(--color-neutral-800);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-500);
+  --text-inverse: var(--color-neutral-100);
+  --text-accent: var(--color-accent);
+  --text-brand: var(--color-primary);
+  
+  /* Interactive Element Colors - Buttons, links, form elements */
+  --interactive-primary: var(--color-accent);
+  --interactive-primary-hover: var(--color-accent-dark);
+  --interactive-secondary: var(--color-primary);
+  --interactive-secondary-hover: var(--color-primary-light);
+  --interactive-border: var(--color-secondary);
+  --interactive-focus: var(--color-accent);
+  
+  /* Status and Feedback Colors - Success, warning, error states */
+  --status-success: #22C55E;
+  --status-warning: #F59E0B;
+  --status-error: #EF4444;
+  --status-info: var(--color-accent);
+  
+  /* Shadow and Depth System - Natural Green Shadows */
+  --shadow-primary: rgba(30, 63, 32, 0.15);     /* Pakistan Green shadow */
+  --shadow-accent: rgba(148, 236, 190, 0.2);    /* Aquamarine shadow */
+  --shadow-neutral: rgba(26, 31, 22, 0.1);      /* Eerie Black shadow */
+
+  /* Legacy Tailwind CSS variables for compatibility */
+  --background: 146 65% 96%; /* Maps to --color-neutral-100 (e9fbf2) */
+  --foreground: 105 14% 11%; /* Maps to --color-neutral-800 (1a1f16) */
+  --muted: 141 30% 87%; /* Maps to --color-neutral-200 (d8e7dc) */
+  --muted-foreground: 134 22% 33%; /* Maps to --color-secondary (4a7856) */
+  --popover: 146 65% 96%; /* Maps to --color-neutral-100 */
+  --popover-foreground: 105 14% 11%; /* Maps to --color-neutral-800 */
+  --card: 146 65% 96%; /* Maps to --color-neutral-100 */
+  --card-foreground: 105 14% 11%; /* Maps to --color-neutral-800 */
+  --border: 134 22% 33%; /* Maps to --color-secondary */
+  --input: 134 22% 33%; /* Maps to --color-secondary */
+  --primary: 130 33% 19%; /* Maps to --color-primary (1e3f20) */
+  --primary-foreground: 146 65% 96%; /* Maps to --color-neutral-100 */
+  --secondary: 134 22% 33%; /* Maps to --color-secondary (4a7856) */
+  --secondary-foreground: 146 65% 96%; /* Maps to --color-neutral-100 */
+  --accent: 151 70% 75%; /* Maps to --color-accent (94ecbe) */
+  --accent-foreground: 105 14% 11%; /* Maps to --color-neutral-800 */
+  --destructive: 0 84% 60%; /* Error color */
+  --destructive-foreground: 146 65% 96%; /* Maps to --color-neutral-100 */
+  --success: 151 70% 75%; /* Maps to --color-accent */
+  --success-foreground: 105 14% 11%; /* Maps to --color-neutral-800 */
+  --ring: 151 70% 75%; /* Maps to --color-accent */
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Dark Mode - Natural Green Theme */
+  --background: 105 14% 11%; /* Eerie Black background */
+  --foreground: 146 65% 96%; /* Light Aquamarine text */
+  --muted: 105 14% 15%; /* Darker Eerie Black */
+  --muted-foreground: 151 70% 75%; /* Aquamarine muted text */
+  --popover: 130 33% 19%; /* Pakistan Green popover */
+  --popover-foreground: 146 65% 96%; /* Light Aquamarine text */
+  --card: 130 33% 19%; /* Pakistan Green cards */
+  --card-foreground: 146 65% 96%; /* Light Aquamarine text */
+  --border: 151 70% 75%; /* Aquamarine borders */
+  --input: 151 70% 75%; /* Aquamarine inputs */
+  
+  /* Primary Brand Colors - Dark Mode */
+  --primary: 151 70% 75%; /* Aquamarine primary */
+  --primary-foreground: 105 14% 11%; /* Eerie Black text */
+  --primary-light: 146 65% 96%; /* Light Aquamarine */
+  --primary-dark: 134 22% 33%; /* Fern Green dark */
+  
+  /* Secondary Colors - Dark Mode */
+  --secondary: 134 22% 33%; /* Fern Green secondary */
+  --secondary-foreground: 146 65% 96%; /* Light Aquamarine text */
+  
+  /* Accent Colors - Dark Mode */
+  --accent: 146 65% 96%; /* Light Aquamarine accent */
+  --accent-foreground: 105 14% 11%; /* Eerie Black text */
+  --accent-light: 151 70% 85%; /* Even lighter Aquamarine */
+  --accent-dark: 134 22% 33%; /* Fern Green dark */
+  --accent-bg: 130 33% 25%; /* Darker Pakistan Green */
+  
+  /* Status Colors - Dark Mode */
+  --destructive: 0 84% 70%; /* Brighter error for dark mode */
+  --destructive-foreground: 146 65% 96%; /* Light Aquamarine */
+  --success: 151 70% 85%; /* Brighter Aquamarine success */
+  --success-foreground: 105 14% 11%; /* Eerie Black */
+  
+  /* Ring/Focus - Dark Mode */
+  --ring: 151 70% 75%; /* Aquamarine focus ring */
+}
+
+/* ============================================= */
+/* GLOBAL BASE STYLES - Foundation for all pages */
+/* ============================================= */
+* {
+  box-sizing: border-box; /* Ensures consistent sizing calculations */
+}
+
+html {
+  scroll-behavior: smooth; /* Creates smooth scrolling between sections */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  font-size: 16px; /* Base font size for responsive scaling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================= */
+/* TYPOGRAPHY SYSTEM - Consistent text hierarchy across all pages */
+/* ============================================= */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-brand);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+}
+
+h1 { font-size: 2.5rem; }    /* Hero headings, main page titles */
+h2 { font-size: 2rem; }      /* Section headings, dashboard titles */
+h3 { font-size: 1.5rem; }    /* Subsection headings, card titles */
+h4 { font-size: 1.25rem; }   /* Component headings */
+h5 { font-size: 1.125rem; }  /* Minor headings */
+h6 { font-size: 1rem; }      /* Labels, small headings */
+
+p {
+  margin-bottom: 1em;
+  color: var(--text-primary);
+}
+
+/* Special heading variations for different contexts */
+.heading-hero {
+  color: var(--text-accent);
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.heading-section {
+  color: var(--text-brand);
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.heading-inverse {
+  color: var(--text-inverse); /* For use on dark backgrounds */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Round and pebble design styles */
+  .card-hover {
+    @apply transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl;
+  }
+
+  .button-hover {
+    @apply transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-lg;
+  }
+
+  /* Earth-Tone Color Utilities */
+  .bg-black-olive { background-color: hsl(69, 9%, 25%); } /* #3f4238 */
+  .bg-reseda-green { background-color: hsl(77, 9%, 43%); } /* #6b705c */
+  .bg-sage { background-color: hsl(60, 13%, 65%); } /* #a5a58d */
+  .bg-champagne-pink { background-color: hsl(45, 30%, 89%); } /* #ffe8d6 */
+  .bg-desert-sand { background-color: hsl(37, 30%, 82%); } /* #ddbea9 */
+  .bg-buff { background-color: hsl(32, 24%, 64%); } /* #cb997e */
+  .bg-beaver { background-color: hsl(25, 23%, 58%); } /* #b98b73 */
+  .bg-ash-gray { background-color: hsl(60, 6%, 72%); } /* #b7b7a4 */
+  .bg-dun { background-color: hsl(47, 17%, 72%); } /* #d4c7b0 */
+  
+  .text-black-olive { color: hsl(69, 9%, 25%); } /* #3f4238 */
+  .text-reseda-green { color: hsl(77, 9%, 43%); } /* #6b705c */
+  .text-sage { color: hsl(60, 13%, 65%); } /* #a5a58d */
+  .text-champagne-pink { color: hsl(45, 30%, 89%); } /* #ffe8d6 */
+  .text-desert-sand { color: hsl(37, 30%, 82%); } /* #ddbea9 */
+  .text-buff { color: hsl(32, 24%, 64%); } /* #cb997e */
+  .text-beaver { color: hsl(25, 23%, 58%); } /* #b98b73 */
+  .text-ash-gray { color: hsl(60, 6%, 72%); } /* #b7b7a4 */
+  
+  .border-reseda-green { border-color: hsl(77, 9%, 43%); } /* #6b705c */
+  .border-sage { border-color: hsl(60, 13%, 65%); } /* #a5a58d */
+  .border-ash-gray { border-color: hsl(60, 6%, 72%); } /* #b7b7a4 */
+  .border-dun { border-color: hsl(47, 17%, 72%); } /* #d4c7b0 */
+
+  /* Hero section with warm earth-tone gradient background */
+  .hero-texture {
+    background: linear-gradient(135deg, hsl(45, 30%, 89%) 0%, hsl(37, 30%, 82%) 100%);
+    position: relative;
+  }
+
+  .hero-texture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      /* Additional marble veining overlay */
+      linear-gradient(75deg, transparent 0%, rgba(255,255,255,0.02) 20%, transparent 30%),
+      linear-gradient(-30deg, transparent 0%, rgba(255,255,255,0.03) 40%, transparent 50%);
+    background-size: 200px 150px, 250px 180px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom color scheme - Dark Green and Red */
+.bg-dark-green { background-color: #013626; }
+.bg-primary-50 { background-color: #f0f8f5; }
+.bg-primary-100 { background-color: #d9f0e5; }
+.bg-primary-600 { background-color: #013626; }
+.bg-primary-700 { background-color: #012419; }
+.text-primary-600 { color: #013626; }
+.text-primary-700 { color: #012419; }
+.border-primary-200 { border-color: #b3d9c7; }
+
+/* Accent colors - Red theme */
+.bg-accent-red { background-color: #681616; }
+.bg-accent-red-dark { background-color: #5a1313; }
+.bg-secondary-600 { background-color: #681616; }
+.bg-secondary-700 { background-color: #5a1313; }
+.text-secondary-600 { color: #681616; }
+.text-secondary-700 { color: #5a1313; }
+
+/* Emerald colors for secondary elements */
+.bg-emerald-100 { background-color: hsl(152 76% 90%); }
+.bg-emerald-500 { background-color: hsl(160 84% 39%); }
+.bg-emerald-600 { background-color: hsl(158 64% 52%); }
+.bg-emerald-700 { background-color: hsl(158 75% 42%); }
+.text-emerald-600 { color: hsl(158 64% 52%); }
+
+/* Additional utility colors */
+.bg-purple-100 { background-color: hsl(269 100% 95%); }
+.bg-purple-500 { background-color: hsl(262 83% 58%); }
+.bg-purple-600 { background-color: hsl(263 70% 50%); }
+.bg-purple-700 { background-color: hsl(263 69% 42%); }
+.text-purple-600 { color: hsl(263 70% 50%); }
+
+.bg-orange-100 { background-color: hsl(34 100% 92%); }
+.bg-orange-500 { background-color: hsl(25 95% 53%); }
+.bg-orange-600 { background-color: hsl(21 90% 48%); }
+.bg-orange-700 { background-color: hsl(17 88% 40%); }
+.text-orange-600 { color: hsl(21 90% 48%); }
+
+.bg-teal-100 { background-color: hsl(151 81% 86%); }
+.bg-teal-500 { background-color: hsl(158 64% 52%); }
+.bg-teal-600 { background-color: hsl(158 58% 45%); }
+.bg-teal-700 { background-color: hsl(158 67% 36%); }
+.text-teal-600 { color: hsl(158 58% 45%); }
+
+.bg-indigo-100 { background-color: hsl(226 100% 94%); }
+.bg-indigo-500 { background-color: hsl(239 84% 67%); }
+.bg-indigo-600 { background-color: hsl(239 84% 58%); }
+.bg-indigo-700 { background-color: hsl(239 84% 50%); }
+.text-indigo-600 { color: hsl(239 84% 58%); }
+
+.bg-red-100 { background-color: hsl(0 93% 94%); }
+.text-red-600 { color: hsl(0 84% 60%); }
+
+/* Yellow accent colors */
+.text-yellow-300 { color: hsl(50 97% 63%); }
+.text-yellow-400 { color: hsl(54 91% 68%); }
+.bg-yellow-300 { background-color: hsl(50 97% 63%); }
+.bg-yellow-400 { background-color: hsl(54 91% 68%); }
+
+/* Blue accent colors */
+.text-blue-100 { color: hsl(214 100% 97%); }
+.text-blue-400 { color: hsl(213 93% 68%); }
+
+/* Natural Green Theme Colors */
+/* Eerie Black */
+.bg-eerie-black { background-color: #1a1f16; }
+.bg-eerie-black-100 { background-color: #050604; }
+.bg-eerie-black-200 { background-color: #0a0c08; }
+.bg-eerie-black-300 { background-color: #0f120d; }
+.bg-eerie-black-400 { background-color: #141811; }
+.bg-eerie-black-500 { background-color: #1a1f16; }
+.bg-eerie-black-600 { background-color: #46543b; }
+.bg-eerie-black-700 { background-color: #738961; }
+.bg-eerie-black-800 { background-color: #a2b394; }
+.bg-eerie-black-900 { background-color: #d0d9c9; }
+
+.text-eerie-black { color: #1a1f16; }
+.text-eerie-black-100 { color: #050604; }
+.text-eerie-black-200 { color: #0a0c08; }
+.text-eerie-black-300 { color: #0f120d; }
+.text-eerie-black-400 { color: #141811; }
+.text-eerie-black-500 { color: #1a1f16; }
+.text-eerie-black-600 { color: #46543b; }
+.text-eerie-black-700 { color: #738961; }
+.text-eerie-black-800 { color: #a2b394; }
+.text-eerie-black-900 { color: #d0d9c9; }
+
+/* Pakistan Green */
+.bg-pakistan-green { background-color: #1e3f20; }
+.bg-pakistan-green-100 { background-color: #060c06; }
+.bg-pakistan-green-200 { background-color: #0c190d; }
+.bg-pakistan-green-300 { background-color: #122513; }
+.bg-pakistan-green-400 { background-color: #18321a; }
+.bg-pakistan-green-500 { background-color: #1e3f20; }
+.bg-pakistan-green-600 { background-color: #39763d; }
+.bg-pakistan-green-700 { background-color: #56ad5b; }
+.bg-pakistan-green-800 { background-color: #8ec992; }
+.bg-pakistan-green-900 { background-color: #c7e4c8; }
+
+.text-pakistan-green { color: #1e3f20; }
+.text-pakistan-green-100 { color: #060c06; }
+.text-pakistan-green-200 { color: #0c190d; }
+.text-pakistan-green-300 { color: #122513; }
+.text-pakistan-green-400 { color: #18321a; }
+.text-pakistan-green-500 { color: #1e3f20; }
+.text-pakistan-green-600 { color: #39763d; }
+.text-pakistan-green-700 { color: #56ad5b; }
+.text-pakistan-green-800 { color: #8ec992; }
+.text-pakistan-green-900 { color: #c7e4c8; }
+
+/* Hunter Green */
+.bg-hunter-green { background-color: #345830; }
+.bg-hunter-green-100 { background-color: #0b120a; }
+.bg-hunter-green-200 { background-color: #152414; }
+.bg-hunter-green-300 { background-color: #20351d; }
+.bg-hunter-green-400 { background-color: #2a4727; }
+.bg-hunter-green-500 { background-color: #345830; }
+.bg-hunter-green-600 { background-color: #51894b; }
+.bg-hunter-green-700 { background-color: #75b06f; }
+.bg-hunter-green-800 { background-color: #a3ca9f; }
+.bg-hunter-green-900 { background-color: #d1e5cf; }
+
+.text-hunter-green { color: #345830; }
+.text-hunter-green-100 { color: #0b120a; }
+.text-hunter-green-200 { color: #152414; }
+.text-hunter-green-300 { color: #20351d; }
+.text-hunter-green-400 { color: #2a4727; }
+.text-hunter-green-500 { color: #345830; }
+.text-hunter-green-600 { color: #51894b; }
+.text-hunter-green-700 { color: #75b06f; }
+.text-hunter-green-800 { color: #a3ca9f; }
+.text-hunter-green-900 { color: #d1e5cf; }
+
+/* Fern Green */
+.bg-fern-green { background-color: #4a7856; }
+.bg-fern-green-100 { background-color: #0f1811; }
+.bg-fern-green-200 { background-color: #1d3022; }
+.bg-fern-green-300 { background-color: #2c4834; }
+.bg-fern-green-400 { background-color: #3b6045; }
+.bg-fern-green-500 { background-color: #4a7856; }
+.bg-fern-green-600 { background-color: #629f72; }
+.bg-fern-green-700 { background-color: #89b796; }
+.bg-fern-green-800 { background-color: #b1cfb9; }
+.bg-fern-green-900 { background-color: #d8e7dc; }
+
+.text-fern-green { color: #4a7856; }
+.text-fern-green-100 { color: #0f1811; }
+.text-fern-green-200 { color: #1d3022; }
+.text-fern-green-300 { color: #2c4834; }
+.text-fern-green-400 { color: #3b6045; }
+.text-fern-green-500 { color: #4a7856; }
+.text-fern-green-600 { color: #629f72; }
+.text-fern-green-700 { color: #89b796; }
+.text-fern-green-800 { color: #b1cfb9; }
+.text-fern-green-900 { color: #d8e7dc; }
+
+/* Aquamarine */
+.bg-aquamarine { background-color: #94ecbe; }
+.bg-aquamarine-100 { background-color: #0b4125; }
+.bg-aquamarine-200 { background-color: #17824b; }
+.bg-aquamarine-300 { background-color: #22c370; }
+.bg-aquamarine-400 { background-color: #52e097; }
+.bg-aquamarine-500 { background-color: #94ecbe; }
+.bg-aquamarine-600 { background-color: #a8f0cb; }
+.bg-aquamarine-700 { background-color: #bef4d8; }
+.bg-aquamarine-800 { background-color: #d4f7e5; }
+.bg-aquamarine-900 { background-color: #e9fbf2; }
+
+.text-aquamarine { color: #94ecbe; }
+.text-aquamarine-100 { color: #0b4125; }
+.text-aquamarine-200 { color: #17824b; }
+.text-aquamarine-300 { color: #22c370; }
+.text-aquamarine-400 { color: #52e097; }
+.text-aquamarine-500 { color: #94ecbe; }
+.text-aquamarine-600 { color: #a8f0cb; }
+.text-aquamarine-700 { color: #bef4d8; }
+.text-aquamarine-800 { color: #d4f7e5; }
+.text-aquamarine-900 { color: #e9fbf2; }
+
+/* Natural Green Professional Button System */
+.btn-primary {
+  background-color: var(--color-accent); /* Aquamarine */
+  color: var(--color-primary-dark); /* Eerie Black */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark); /* Fern Green */
+  color: var(--color-neutral-100); /* Light Aquamarine */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary); /* Pakistan Green */
+  border: 2px solid var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary); /* Pakistan Green */
+  color: var(--color-neutral-100); /* Light Aquamarine */
+}
+
+/* Professional Form Elements */
+input, textarea, select {
+  border: 2px solid var(--color-secondary); /* Fern Green */
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent); /* Aquamarine */
+  box-shadow: 0 0 0 3px var(--shadow-accent);
+}
+
+/* Section Backgrounds */
+.section-light {
+  background-color: var(--color-neutral-100); /* Light Aquamarine */
+  padding: 3rem 0;
+}
+
+.section-dark {
+  background-color: var(--color-primary); /* Pakistan Green */
+  color: var(--color-neutral-100); /* Light Aquamarine */
+  padding: 3rem 0;
+}
+
+/* Accent Elements */
+.accent-border {
+  border-left: 4px solid var(--color-accent); /* Aquamarine */
+  padding-left: 1rem;
+}
+
+.highlight {
+  background-color: var(--color-accent); /* Aquamarine */
+  color: var(--color-primary-dark); /* Eerie Black */
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Professional Card System */
+.card {
+  background-color: var(--color-neutral-100); /* Light Aquamarine */
+  border: 1px solid var(--color-secondary); /* Fern Green */
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px var(--shadow-neutral);
+}
+
+.card-featured {
+  background-color: var(--color-primary); /* Pakistan Green */
+  color: var(--color-neutral-100); /* Light Aquamarine */
+  border: none;
+}
+
+.card-featured h3 {
+  color: var(--color-accent); /* Aquamarine */
+}
+
+/* ============================================= */
+/* NAVIGATION SYSTEM - Headers, menus, breadcrumbs */
+/* ============================================= */
+.navbar, nav, header {
+  background-color: var(--bg-header) !important;
+  color: var(--text-inverse) !important;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px var(--shadow-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent) !important;
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav a, nav a, header a {
+  color: var(--text-inverse) !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.navbar-nav a:hover, nav a:hover, header a:hover,
+.navbar-nav a.active {
+  color: var(--color-accent) !important;
+  background-color: rgba(183, 121, 31, 0.1);
+}
+
+/* ============================================= */
+/* BUTTON SYSTEM - All interactive elements */
+/* ============================================= */
+.btn, button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+}
+
+.btn-primary, button[class*="bg-primary"], [role="button"].bg-primary {
+  background-color: var(--interactive-primary) !important;
+  color: var(--text-inverse) !important;
+  box-shadow: 0 2px 8px var(--shadow-accent);
+}
+
+.btn-primary:hover, button[class*="bg-primary"]:hover {
+  background-color: var(--interactive-primary-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow-accent);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--interactive-secondary);
+  border: 2px solid var(--interactive-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--interactive-secondary);
+  color: var(--text-inverse);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-accent);
+  color: var(--text-inverse);
+}
+
+/* Button sizes for different contexts */
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.875rem; }
+.btn-lg { padding: 1rem 2rem; font-size: 1.125rem; }
+.btn-block { width: 100%; }
+
+/* ============================================= */
+/* CARD SYSTEM - Content containers for all pages */
+/* ============================================= */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px var(--shadow-neutral);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--shadow-neutral);
+}
+
+.card-header {
+  border-bottom: 2px solid var(--color-neutral-300);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  color: var(--text-brand);
+  margin-bottom: 0.5rem;
+}
+
+.card-featured {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--text-inverse);
+  border: 3px solid var(--color-accent);
+}
+
+.card-featured .card-title {
+  color: var(--color-accent);
+}
+
+/* ============================================= */
+/* HERO SECTIONS - Landing page headers and feature areas */
+/* ============================================= */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--text-inverse);
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(183, 121, 31, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-accent-light);
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.hero-cta {
+  margin-top: 2rem;
+}
+
+/* ============================================= */
+/* FORM SYSTEM - All input elements and forms */
+/* ============================================= */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-brand);
+}
+
+.form-input,
+.form-textarea,
+.form-select,
+input, textarea, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--color-neutral-300);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--interactive-focus);
+  box-shadow: 0 0 0 3px rgba(183, 121, 31, 0.1);
+}
+
+/* ============================================= */
+/* DASHBOARD COMPONENTS - Admin interfaces and data displays */
+/* ============================================= */
+.dashboard {
+  margin-left: 250px;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+}
+
+.dashboard-header {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px var(--shadow-neutral);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-widget {
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--shadow-neutral);
+  border-left: 4px solid var(--color-accent);
+}
+
+.widget-title {
+  color: var(--text-brand);
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.widget-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.widget-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Data Tables - For displaying structured information */
+.table-container {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px var(--shadow-neutral);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-neutral-300);
+  color: var(--text-primary);
+}
+
+.table tr:hover {
+  background-color: var(--color-neutral-200);
+}
+
+/* ============================================= */
+/* UTILITY CLASSES - Quick styling helpers */
+/* ============================================= */
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.text-primary { color: var(--text-primary) !important; }
+.text-accent { color: var(--text-accent) !important; }
+.text-brand { color: var(--text-brand) !important; }
+.text-inverse { color: var(--text-inverse) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+
+/* Section backgrounds */
+.section-light {
+  background-color: var(--bg-section-light);
+  padding: 3rem 0;
+}
+
+.section-dark {
+  background-color: var(--bg-section-dark);
+  color: var(--text-inverse);
+  padding: 3rem 0;
+}
+
+/* Accent elements */
+.accent-border {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 1rem;
+}
+
+.highlight {
+  background-color: var(--color-accent);
+  color: var(--text-inverse);
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Footer styling */
+.footer {
+  background-color: var(--bg-footer);
+  color: var(--text-inverse);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--color-accent);
+}
+
+/* ============================================= */
+/* COMPREHENSIVE MOBILE RESPONSIVE DESIGN */
+/* ============================================= */
+
+/* Base Mobile Styles - Core responsive foundation */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+/* Responsive Images and Media */
+img, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+img {
+  border-radius: 4px;
+}
+
+/* Responsive containers */
+.container, .hero-content, .section-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Flexible grid containers */
+.grid, .dashboard-grid {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Navigation Mobile Fixes */
+.navbar, nav, header {
+  background-color: var(--bg-header) !important;
+  color: var(--text-inverse) !important;
+  padding: 0.75rem 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  box-shadow: 0 2px 10px var(--shadow-primary) !important;
+}
+
+.navbar-container {
+  padding: 0 1rem !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Mobile Navigation Links */
+.navbar-nav a, nav a, header a {
+  color: var(--text-inverse) !important;
+  background: transparent !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.9rem !important;
+}
+
+.navbar-nav a:hover, nav a:hover, header a:hover {
+  color: var(--color-accent) !important;
+  background-color: rgba(148, 236, 190, 0.1) !important;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-inverse);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-nav {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+  
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+/* Tablet Breakpoint - 768px and below */
+@media screen and (max-width: 768px) {
+  /* Typography scaling */
+  html { font-size: 15px; }
+  
+  body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  h1 { font-size: 1.75rem; margin-bottom: 0.75rem; }
+  h2 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  h4 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  h5 { font-size: 1rem; margin-bottom: 0.5rem; }
+  h6 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+  
+  .heading-hero {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Navigation adjustments */
+  .navbar, nav, header {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .navbar-container {
+    padding: 0 0.75rem !important;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Dashboard responsive */
+  .dashboard {
+    margin-left: 0;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dashboard-widget {
+    padding: 1rem;
+  }
+  
+  .widget-value {
+    font-size: 1.5rem;
+  }
+  
+  /* Card system mobile */
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Button system mobile */
+  .btn, button {
+    padding: 0.625rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn-sm { 
+    padding: 0.5rem 0.75rem; 
+    font-size: 0.8rem; 
+  }
+  
+  /* Hero section mobile */
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .hero-content {
+    padding: 0 1rem;
+  }
+  
+  /* Form elements mobile */
+  input, textarea, select, .form-input, .form-textarea, .form-select {
+    padding: 0.625rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Table responsive */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table {
+    min-width: 600px;
+  }
+  
+  .table th, .table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Phone Breakpoint - 480px and below */
+@media screen and (max-width: 480px) {
+  /* Even smaller typography */
+  html { font-size: 14px; }
+  
+  body {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+  }
+  
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.125rem; }
+  h4 { font-size: 1rem; }
+  
+  .heading-hero {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  
+  /* Navigation ultra-mobile */
+  .navbar-container {
+    padding: 0 0.5rem !important;
+  }
+  
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.25rem;
+  }
+  
+  .navbar-nav a {
+    padding: 0.5rem !important;
+    text-align: center;
+    border-radius: 4px;
+  }
+  
+  /* Content spacing */
+  .dashboard, .hero-content, .card {
+    padding: 0.75rem;
+  }
+  
+  .dashboard-widget {
+    padding: 0.75rem;
+  }
+  
+  .widget-value {
+    font-size: 1.25rem;
+  }
+  
+  /* Buttons ultra-mobile */
+  .btn, button {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+  }
+  
+  /* Form elements ultra-mobile */
+  input, textarea, select {
+    padding: 0.75rem;
+    font-size: 1rem; /* Prevent zoom on iOS */
+    border-radius: 6px;
+  }
+  
+  /* Hero ultra-mobile */
+  .hero {
+    padding: 1.5rem 0;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Section spacing */
+  .section-light, .section-dark {
+    padding: 2rem 0;
+  }
+}
+
+/* Large Mobile/Small Tablet - 600px to 768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch-friendly interactive elements */
+  .btn, button, .navbar-nav a, nav a, header a {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .card:hover {
+    transform: none;
+    box-shadow: 0 2px 10px var(--shadow-neutral);
+  }
+  
+  .btn-primary:hover, .btn-secondary:hover {
+    transform: none;
+  }
+}
+
+/* Landscape mobile orientation */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    padding: 1rem 0;
+  }
+  
+  .heading-hero {
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+/* High DPI/Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Ensure sharp rendering on high-DPI screens */
+  .card, .btn, .dashboard-widget {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* ============================================= */
+/* MOBILE UTILITY CLASSES */
+/* ============================================= */
+
+/* Show/Hide on different screen sizes */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-flex {
+    display: flex;
+  }
+  
+  .mobile-grid {
+    display: grid;
+  }
+}
+
+/* Mobile text sizes */
+.text-mobile-sm { font-size: 0.8rem; }
+.text-mobile-base { font-size: 0.9rem; }
+.text-mobile-lg { font-size: 1rem; }
+.text-mobile-xl { font-size: 1.1rem; }
+
+/* Mobile spacing */
+.p-mobile { padding: 0.75rem; }
+.px-mobile { padding-left: 0.75rem; padding-right: 0.75rem; }
+.py-mobile { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.m-mobile { margin: 0.75rem; }
+.mx-mobile { margin-left: 0.75rem; margin-right: 0.75rem; }
+.my-mobile { margin-top: 0.75rem; margin-bottom: 0.75rem; }
+
+/* Mobile flex utilities */
+.mobile-flex-col {
+  flex-direction: column;
+}
+
+.mobile-items-center {
+  align-items: center;
+}
+
+.mobile-justify-center {
+  justify-content: center;
+}
+
+/* Mobile width utilities */
+.mobile-w-full {
+  width: 100%;
+}
+
+.mobile-max-w-full {
+  max-width: 100%;
+}
+
+/* Fix specific component issues on mobile */
+@media screen and (max-width: 768px) {
+  /* Ensure buttons don't break layout */
+  .btn, button, [role="button"] {
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  
+  /* Fix modal positioning */
+  .modal, .dialog {
+    margin: 1rem;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+  }
+  
+  /* Fix dropdown menus */
+  .dropdown-content {
+    position: fixed;
+    max-width: calc(100vw - 2rem);
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  /* Fix tooltips */
+  .tooltip {
+    font-size: 0.8rem;
+    max-width: 200px;
+  }
+}
